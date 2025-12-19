@@ -1,0 +1,722 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 1rem;
+}
+
+header .navigation{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header .navigation .nav-links{
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.icons{
+    color: white;
+    display: none;
+}
+
+.main{
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem;
+}
+
+.main .left{
+    color: white;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.main p{
+    font-size: 1.5rem;
+    color: gray;
+}
+
+.main a{
+    text-decoration: none;
+    color: black;
+    background-color: orange;
+    text-align: center;
+    padding: 1rem;
+    margin: 10px 0;
+    width: 30%;
+    border-radius: 4px;
+}
+
+.title span{
+    color: orange;
+    border-radius: 50%;
+}
+
+.main img{
+    position: relative;
+    width: 100%;
+    top: 100px;
+}
+
+.bikes{
+    padding: 100px 20px;
+}
+
+.bikes .cards{
+    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bikes .cards img{
+    width: 100%;
+}
+
+.bikes .cards h4 span{
+    background-color: rgb(255, 166, 0);
+    display: inline-block;
+    width: 10px;
+    height: 5px;
+}
+
+.about{
+    background-color: black;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem;
+    height: 150vh;
+}
+
+.content-img{
+    width: 100%;
+    position: relative;
+    top: -100px;
+    border-radius: 5px;
+}
+
+.about .content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about .content a{
+    color: Orange;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin: 20px 0 100px 0;
+}
+
+.about .content .inside-content p{
+    text-align: right;
+    color: gray;
+}
+
+.inside-content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.partners{
+    padding: 100px 2rem;
+}
+
+.partners .partners-img{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.partners .partners-img img{
+    width: 80%;
+}
+
+.partners-content {
+    display: flex;
+    width: 100%;
+    height: 50vh;
+    margin-top: 200px ;
+}
+.image-section {
+    flex: 1;
+    background: url('img/depoimento.svg') no-repeat center center/cover;
+    filter: grayscale(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.text-section {
+    flex: 1;
+    background: #FFC107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.testimonial {
+    max-width: 500px;
+    font-size: 20px;
+    font-style: italic;
+    color: #000;
+}
+.testimonial span {
+    display: block;
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: bold;
+    color: rgba(116, 75, 0, 0.735);
+}
+
+.text-image{
+    position: relative;
+    top: 80px;
+    left: 20px;
+}
+
+.insurance{
+    background-color: #1b1b18;
+    color: white;
+    padding: 2rem;
+}
+
+.insurance .price-cards{
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    align-items: center;
+}
+
+.insurance .price-cards .price-card{
+    background-color: black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    height: fit-content;
+    width: 40%;
+}
+
+.insurance .price-cards .price-card .header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:20px ;
+}
+
+
+.insurance .price-cards .price-card .header .gold{
+    color: orange;
+}
+
+.insurance .price-cards .price-card .header h2 span{
+    position: relative;
+    top: 15px;
+    right: 45px;
+    color: gray;
+    font-size: xx-small;
+}
+
+.insurance .price-cards .price-card p{
+    margin-bottom: 10px;
+}
+
+.insurance .price-cards .price-card .btn{
+    color: black;
+    text-decoration: none;
+    background-color: gray;
+    padding: 1rem;
+    display: inline-block;
+    position: inherit;
+    text-transform: uppercase;
+    border-radius: 7px;
+}
+
+.insurance .price-cards .price-card  .golden {
+    background-color: rgb(225, 167, 59);
+}
+
+footer{
+    background-color: black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: white;
+    padding: 2rem;
+}
+
+footer h4{
+    margin-bottom: 20px;
+}
+
+footer ul{
+    list-style: none;
+}
+
+footer ul li {
+    margin-bottom: 10px ;
+}
+
+footer ul li p img{
+    margin-right: 10px ;
+}
+
+.ContactMain{
+    background-color: #1b1b18;
+    height: 50dvh;
+    padding: 1rem;
+}
+
+.ContactMain h4{
+    font-size: 1.5rem;
+    color: gray;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+.centralize{
+    display: flex;
+    justify-content: center;
+}
+
+.ContactMain .Contact{
+    margin: 0 auto;
+    position: relative;
+    color: white;
+    display: flex;
+    width: 80%;
+}
+
+.ContactMain .Contact .Content{
+    background-color: black;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 2rem;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.ContactMain .Contact .Content > img{
+    width: 15%;
+}
+
+.ContactMain .Contact form{
+    padding: 1rem;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.ContactMain .Contact form .flexing{
+    display: flex;
+    gap: 40px;
+    width: 600px;
+}
+
+.ContactMain .Contact form  select{
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid transparent;
+    background-color: rgba(211, 211, 211, 0.342);  
+}
+
+.ContactMain .Contact form .flexing > div{
+    width: 260px;
+}
+
+
+.ContactMain .Contact form input{
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid transparent;
+    background-color: rgba(211, 211, 211, 0.342);  
+}
+
+.ContactMain .Contact form textarea{
+    height: 130px ;
+}
+
+.ContactMain .Contact form .flexBtn{
+    display: flex;
+    justify-content: space-between;
+}
+.ContactMain .Contact form .btn{
+    background-color: orange;
+    outline: none;
+    border: 1px solid transparent;
+    width: 40%;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.localisation{
+    background-color: aliceblue;
+    padding: 300px 2rem 2rem 2rem;
+}
+
+.localisation .title1{
+    font-size: 3rem;
+}
+
+.localisation .title1 span{
+    color: orange;
+}
+
+.localisation .Cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.localisation .Cards .card{
+    background-color: white;
+    
+}
+
+.localisation .Cards .card .content{
+    display: flex;
+    flex-direction:column;
+    gap: 40px;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.localisation .Cards .card .content > div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.localisation .Cards .card .content > div > div{
+    border-left: 1px solid black;
+    padding-left: 30px;
+}
+
+.map{
+    width: 100%;
+}
+
+.Bickes{
+    padding: 3rem;
+}
+
+.Bickes .bike {
+    display: flex;
+    height: 400px;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    margin-left: 180px;
+}
+
+.Bickes .bike span{
+    color: white;
+}
+
+.black{
+    background-color: black;
+    color: white;
+}
+
+.Bickes .bike .Imagediv{
+    width: 600px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+    left: -200px;
+}
+
+.Bickes .bike .Imagediv.nimbus{
+    background: url(img/bicicleta1\ 1.svg) no-repeat ;
+    background-position: center;
+    background-size: cover;
+}
+.Bickes .bike .Imagediv.magic{
+    background: url(img/bicicleta2.svg) no-repeat ;
+    background-position: center;
+    background-size: cover;
+}
+.Bickes .bike .Imagediv.nebula{
+    background: url(img/bicicleta3.svg) no-repeat ;
+    background-position: center;
+    background-size: cover;
+}
+
+.Bickes .bike .Imagediv span{
+    background-color: black;
+    border-radius: 5px;
+    height: fit-content;
+    padding: 0.4rem;
+}
+
+.Bikecontent{
+    position: inherit;
+    left: -100px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.Bikecontent h4{
+    font-size: 2rem;
+}
+
+.Bikecontent h4 span{
+    background-color: orange;
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+}
+
+.Bickes .flexing{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.btn{
+    background-color: orange;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 1rem;
+    text-transform: uppercase;
+    height: 50px;
+    font-weight: bold;
+}
+
+.product{
+    display: flex;
+    gap: 20px;
+    padding: 1rem;
+    background-color: #1b1b18;
+    color: white;
+}
+
+.product .images{
+    width: 50%;
+}
+
+.product .images img{
+    width: 100%;
+}
+
+.product .images .flexingImage{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
+}
+
+.product .content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.white{
+    color: white;
+}
+
+.btnFlex{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.btnFlex span{
+    background-color: rgba(0, 0, 0, 0.537);
+    border-radius: 5px;
+    margin-bottom: 6px;
+}
+
+.btnFlex > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.product .flexing2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: black;
+    padding: 1rem;
+}
+
+.product .tachnic{
+    background-color: black;
+    padding: 1rem;
+}
+
+.product .tachnic > div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.more{
+    display: flex;
+    background-color: black;
+    color: white;
+    gap: 50px;
+    margin-top: 200px;
+    padding:3rem ;
+}
+
+.more .title{
+    font-size: 2.5rem;
+    text-transform: lowercase;
+}
+
+.more .title::first-letter{
+    text-transform: uppercase;
+}
+
+.more .content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.more .content .btn{
+    width: 40%;
+}
+
+.more .MoreImg{
+    background: url(img/seguros.svg) no-repeat;
+    width: 35%;
+    height: 600px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    top: -100px;
+}
+
+.Centralize{
+    display: flex;
+    justify-content: center;
+}
+
+.Centralize .Contact{
+    display: flex;
+    width: 80%;
+    gap: 200px;
+    background-color: black;
+    position: relative;
+    top: -150px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.Centralize .Contact h4 span{
+    background-color: orange;
+    width: 10px;
+    height: 5px;
+    display: inline-block;
+}
+
+.Centralize .Contact .Content{
+    color: white;
+    padding: 1rem;
+}
+
+.Centralize .Contact form{
+    background-color: white;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.Centralize .Contact form input{
+    width: 98%;
+    padding: 1rem;
+    border: 1px solid transparent;
+    background-color: rgba(211, 211, 211, 0.342);  
+}
+
+.Centralize .Contact form .flexing{
+    display: flex;
+    gap: 40px;
+}
+
+.Centralize .Contact form .flexing > div{
+    width: 300px;
+}
+
+.Centralize .Contact form .flexingbtn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Centralize .Contact form .flexingbtn .btn{
+    width: 30%;
+    border-radius: 3px;
+}
+
+.big{
+    margin-bottom: 200px;
+}
+
+@media ( max-width:768px ){
+    .main .left .btn{
+        width: 100%;
+    }
+    .main .right{
+        display: none;
+    }
+    .bikes .cards{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .about{
+        height: fit-content;
+    }
+    .about .content{
+        width: 100% !important;
+    }
+    .content-img{
+        display: none;
+    }
+    .image-section{
+        display: none;
+    }
+    .price-cards{
+        flex-direction: column;
+    }
+    .price-card{
+        width: 100% !important;
+    }
+    footer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    header{
+        width: 100% !important;
+        overflow: scroll;
+    }
+}
