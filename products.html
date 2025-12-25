@@ -1,182 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Bikecraft</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AY-SHOP — Premium E-Bikes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ===== GLOBAL RESET & TYPOGRAPHY ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #e63946;
+            --text: #333;
+            --text-light: #666;
+            --white: #fff;
+            --border: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .navigation {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links {
+            font-weight: 600;
+            color: var(--text);
+            transition: color 0.2s;
+        }
+
+        .nav-links:hover {
+            color: var(--accent);
+        }
+
+        .icons {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+        }
+
+        .hero h4 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero .title {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        /* ===== FILTERS ===== */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin: 0 auto 2rem;
+            max-width: 1200px;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            color: var(--text-light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* ===== PRODUCTS ===== */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            padding-bottom: 3rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .nimbus { background: linear-gradient(135deg, #d1e8ff, #a3c4f3); }
+        .magic  { background: linear-gradient(135deg, #e0f7fa, #80deea); }
+        .nebula { background: linear-gradient(135deg, #f3e5f5, #ce93d8); }
+
+        .price {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--white);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .product-info {
+            padding: 1.25rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .spec-tag {
+            background: #f1f3f5;
+            color: var(--text-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            width: 100%;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #c1121f;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: #ddd;
+            padding: 3rem 0 1.5rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-start .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        footer h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 0.6rem;
+        }
+
+        footer a {
+            color: #bbb;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .social-icons img:hover {
+            opacity: 1;
+        }
+
+        footer p {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .icons {
+                display: block;
+            }
+
+            header nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                padding: 1.5rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                display: none;
+            }
+
+            header nav.active {
+                display: block;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .hero .title {
+                font-size: 2.2rem;
+            }
+
+            .filters {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .products {
+                padding: 0 1rem 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <a href="index.html"><img src="img/bikcraft 1.svg"></a>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">AY-SHOP</a>
+            </div>
+            <nav>
+                <ul class="navigation">
+                    <li><a href="index.html#insurance" class="nav-links">Insurance</a></li>
+                    <li><a href="contact.html" class="nav-links">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="icons">
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
+            </div>
         </div>
-        <nav>
-            <ul class="navigation">
-                <li><a href="index.html#insurance" class="nav-links">Insurance</a></li>
-                <li><a href="contact.html" class="nav-links">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="ContactMain">
-        <h4>
-            choose the best for you
-        </h4>
-        <h1 class="title white">
-            our bicycles<span>.</span>
-        </h1>
-    </section>
-    <section class="Bickes">
-        <div class="bike">
-            <div>
-                <div class="Imagediv nimbus">
-                    <span>R$ 4999</span>
-                </div>
-                
-            </div>
-            <div class="Bikecontent">
-                <h4><span></span><br>
-                    Nimbus Stark
-                </h4>
-                <p>The Nimbus Stark is the best Bikcraft ever created by our team. It comes equipped with the best accessories, ensuring higher speed.</p>
-
-                <div class="flexing">
-                    <div>
-                        <p><img src="img/eletrica.svg">
-                            Electric Motor</p>
-                            <p><img src="img/carbono.svg">
-                            Carbon Fiber</p>
-                            <p><img src="img/velocidade.svg">
-                            50 Km/h</p>
-                            <p>
-                                <img src="img/rastreador.svg">
-                                Tracker 
-                            </p>
-                    </div>
-                    <button class="btn" onclick="location.href='bikes/nimbus.html'">
-                        MORE ABOUT <img src="img/seta.svg">
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="bike black">
-            <div>
-                <div class="Imagediv magic">
-                    <span>R$ 2499</span>
-                </div>
-                
-            </div>
-            <div class="Bikecontent">
-                <h4><span></span><br>
-                    Magic Might
-                </h4>
-                <p>The Magic Might is the best Bikcraft ever created by our team. It comes equipped with the best accessories, ensuring higher speed.</p>
-
-                <div class="flexing">
-                    <div>
-                        <p><img src="img/eletrica.svg">
-                            Electric Motor</p>
-                            <p><img src="img/carbono.svg">
-                            Carbon Fiber</p>
-                            <p><img src="img/velocidade.svg">
-                            50 Km/h</p>
-                            <p>
-                                <img src="img/rastreador.svg">
-                                Tracker 
-                            </p>
-                    </div>
-                    <button class="btn" onclick="location.href='bikes/magic.html'">
-                        MORE ABOUT <img src="img/seta.svg" alt="">
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="bike">
-            <div>
-                <div class="Imagediv nebula">
-                    <span>R$ 3999</span>
-                </div>
-                
-            </div>
-            <div class="Bikecontent">
-                <h4><span></span><br>
-                    Nebula Cosmic
-                </h4>
-                <p>The Nebula Cosmic is the best Bikcraft ever created by our team. It comes equipped with the best accessories, ensuring higher speed.</p>
-
-                <div class="flexing">
-                    <div>
-                        <p><img src="img/eletrica.svg">
-                            Electric Motor</p>
-                            <p><img src="img/carbono.svg">
-                            Carbon Fiber</p>
-                            <p><img src="img/velocidade.svg">
-                            50 Km/h</p>
-                            <p>
-                                <img src="img/rastreador.svg">
-                                Tracker 
-                            </p>
-                    </div>
-                    <button class="btn" onclick="location.href='bikes/nebula.html'">
-                        MORE ABOUT <img src="img/seta.svg" alt="">
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-
-
+    <section class="hero">
+        <h4>Choose the best for you</h4>
+        <h1 class="title">Our Products<span>.</span></h1>
     </section>
 
+    <!-- MULTI-FILTER SECTION -->
+    <section class="filters">
+        <!-- Category -->
+        <div class="filter-group">
+            <label>Category</label>
+            <div class="filter-options">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="electric">Electric</button>
+                <button class="filter-btn" data-category="carbon">Carbon</button>
+                <button class="filter-btn" data-category="tracker">Tracker</button>
+            </div>
+        </div>
 
+        <!-- Type -->
+        <div class="filter-group">
+            <label>Type</label>
+            <div class="filter-options">
+                <button class="filter-btn active" data-type="all">All</button>
+                <button class="filter-btn" data-type="urban">Urban</button>
+                <button class="filter-btn" data-type="sport">Sport</button>
+                <button class="filter-btn" data-type="mountain">Mountain</button>
+            </div>
+        </div>
 
+        <!-- Price -->
+        <div class="filter-group">
+            <label>Price</label>
+            <div class="filter-options">
+                <button class="filter-btn active" data-price="all">All</button>
+                <button class="filter-btn" data-price="0-2500">Under R$2500</button>
+                <button class="filter-btn" data-price="2500-4000">R$2500 – R$4000</button>
+                <button class="filter-btn" data-price="4000+">Over R$4000</button>
+            </div>
+        </div>
+    </section>
 
+    <!-- PRODUCTS -->
+    <div class="container">
+        <section class="products" id="products-container">
+            <!-- Nimbus Stark -->
+            <div class="product-card" data-category="electric carbon tracker" data-type="sport" data-price="4999">
+                <div class="product-image nimbus">
+                    <span class="price">R$ 4999</span>
+                </div>
+                <div class="product-info">
+                    <h3>Nimbus Stark</h3>
+                    <p>High-performance e-bike with carbon frame and GPS tracker.</p>
+                    <div class="specs">
+                        <span class="spec-tag">Electric</span>
+                        <span class="spec-tag">Carbon</span>
+                        <span class="spec-tag">Tracker</span>
+                        <span class="spec-tag">Sport</span>
+                    </div>
+                    <button class="btn" onclick="location.href='bikes/nimbus.html'">MORE ABOUT</button>
+                </div>
+            </div>
 
+            <!-- Magic Might -->
+            <div class="product-card" data-category="electric carbon" data-type="urban" data-price="2499">
+                <div class="product-image magic">
+                    <span class="price">R$ 2499</span>
+                </div>
+                <div class="product-info">
+                    <h3>Magic Might</h3>
+                    <p>Affordable urban e-bike with lightweight carbon frame.</p>
+                    <div class="specs">
+                        <span class="spec-tag">Electric</span>
+                        <span class="spec-tag">Carbon</span>
+                        <span class="spec-tag">Urban</span>
+                    </div>
+                    <button class="btn" onclick="location.href='bikes/magic.html'">MORE ABOUT</button>
+                </div>
+            </div>
 
-
-
-
-
+            <!-- Nebula Cosmic -->
+            <div class="product-card" data-category="electric tracker" data-type="sport" data-price="3999">
+                <div class="product-image nebula">
+                    <span class="price">R$ 3999</span>
+                </div>
+                <div class="product-info">
+                    <h3>Nebula Cosmic</h3>
+                    <p>Futuristic e-bike with real-time tracking and smart controls.</p>
+                    <div class="specs">
+                        <span class="spec-tag">Electric</span>
+                        <span class="spec-tag">Tracker</span>
+                        <span class="spec-tag">Sport</span>
+                    </div>
+                    <button class="btn" onclick="location.href='bikes/nebula.html'">MORE ABOUT</button>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <div class="footer-start">
-            <div class="logo">
-                <img src="img/bikcraft 1.svg">
+        <div class="container">
+            <div class="footer-start">
+                <div class="logo">AY-SHOP</div>
+            </div>
+            <div class="footer-midle">
+                <h4>Contact</h4>
+                <ul>
+                    <li>+212 612 345678</li>
+                    <li>aminezth022@gmail.com</li>
+                    <li>Rue Al Nassr, Taza</li>
+                    <li>Morocco</li>
+                    <li class="social-icons">
+                        <img src="img/instagram.svg" alt="Instagram" />
+                        <img src="img/facebook.svg" alt="Facebook" />
+                        <img src="img/youtube.svg" alt="YouTube" />
+                    </li>
+                </ul>
+            </div>
+            <div class="end-footer">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="index.html#insurance">Insurance</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
             </div>
         </div>
-        <div class="footer-midle">
-            <h4>
-                Contact
-            </h4>
-            <ul>
-                <li>+212612345678</li>
-                <li>aminezth022@gmail.com</li>
-                <li><p>Rue Al nassr-Taza</p></li>
-                <li>MOROCCO - TDZ</li>
-                <li><p><img src="img/instagram.svg">      <img src="img/facebook.svg">        <img src="img/youtube.svg"></p></li>
-            </ul>
-        </div>
-        <div class="end-footer">
-            <h4>
-                Information
-            </h4>
-            <ul>
-            <li>Bicycles</li>
-            <li>Insurance</li>
-            <li>Contact</li>
-            <li>Terms and conditions</li>
-        </ul>
-        </div>
-        <p>
-            Bikcraft &copy; All rights reserved
-        </p>
+        <p class="container">AY-SHOP &copy; 2025 — All rights reserved</p>
     </footer>
-    
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const nav = document.querySelector('nav');
+        if (menuBtn && nav) {
+            menuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+            document.querySelectorAll('.nav-links').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                });
+            });
+        }
+
+        // Multi-filter logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        let activeFilters = {
+            category: 'all',
+            type: 'all',
+            price: 'all'
+        };
+
+        function matchesFilters(product) {
+            const cat = product.dataset.category || '';
+            const type = product.dataset.type || '';
+            const price = parseFloat(product.dataset.price) || 0;
+
+            // Category filter
+            if (activeFilters.category !== 'all' && !cat.includes(activeFilters.category)) return false;
+
+            // Type filter
+            if (activeFilters.type !== 'all' && type !== activeFilters.type) return false;
+
+            // Price filter
+            if (activeFilters.price !== 'all') {
+                if (activeFilters.price === '0-2500' && price > 2500) return false;
+                if (activeFilters.price === '2500-4000' && (price < 2500 || price > 4000)) return false;
+                if (activeFilters.price === '4000+' && price <= 4000) return false;
+            }
+
+            return true;
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                let group = '';
+                if (btn.hasAttribute('data-category')) group = 'category';
+                else if (btn.hasAttribute('data-type')) group = 'type';
+                else if (btn.hasAttribute('data-price')) group = 'price';
+
+                const value = btn.dataset[group];
+                activeFilters[group] = value;
+
+                // Update active state only within the same group
+                document.querySelectorAll(`[data-${group}]`).forEach(b => {
+                    b.classList.toggle('active', b === btn);
+                });
+
+                // Apply filtering
+                productCards.forEach(card => {
+                    card.style.display = matchesFilters(card) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

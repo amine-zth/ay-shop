@@ -7,29 +7,39 @@
 }
 
 
-header{
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: black;
     padding: 1rem;
+    position: relative;
+}
+header .logo a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-header .navigation{
+header .navigation {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
-header .navigation .nav-links{
+header .navigation .nav-links {
     text-decoration: none;
     color: white;
     padding: 1rem;
 }
 
-.icons{
+.icons {
     color: white;
     display: none;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 .main{
@@ -78,21 +88,21 @@ header .navigation .nav-links{
     top: 100px;
 }
 
-.bikes{
+.products{
     padding: 100px 20px;
 }
 
-.bikes .cards{
+.products .cards{
     gap: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.bikes .cards img{
+.products .cards img{
     width: 100%;
 }
 
-.bikes .cards h4 span{
+.products .cards h4 span{
     background-color: rgb(255, 166, 0);
     display: inline-block;
     width: 10px;
@@ -691,7 +701,7 @@ footer ul li p img{
     .main .right{
         display: none;
     }
-    .bikes .cards{
+    .products .cards{
         grid-template-columns: repeat(1, 1fr);
     }
     .about{
@@ -715,8 +725,41 @@ footer ul li p img{
     footer{
         grid-template-columns: repeat(2, 1fr);
     }
-    header{
-        width: 100% !important;
-        overflow: scroll;
+    
+}
+@media (max-width: 768px) {
+    .product .images .mainImage {
+        width: 90%;
+        position: absolute;
+        top: 180PX;
+    }
+    .product .images .flexingImage {
+        width: 40%;
+        position: absolute;
+        top: 455px;
+    }
+    .product .content {
+        width: 400%;
+    }
+    .more .MoreImg {
+        display: none;
+    }
+    header .navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: black;
+        flex-direction: column;
+        align-items: center;
+        display: none; /* hide by default */
+    }
+
+    header .navigation.active {
+        display: flex;
+    }
+
+    .icons {
+        display: block;
     }
 }
