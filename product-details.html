@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details — AY-SHOP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ===== GLOBAL RESET & TYPOGRAPHY ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c9a77c;
+            --text: #222;
+            --text-light: #666;
+            --white: #fff;
+            --bg-light: #fafafa;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo a {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        /* ===== PRODUCT DETAIL ===== */
+        .product-detail {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .product-images {
+            flex: 1;
+        }
+
+        .main-image {
+            height: 400px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            background-size: cover;
+            background-position: center;
+            background-color: #f5f5f5;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 1rem 0;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #b89567;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .specs {
+            margin: 2rem 0;
+        }
+
+        .specs h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .spec-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .spec-item span:first-child {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .spec-item span:last-child {
+            color: var(--text-light);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: #ccc;
+            padding: 3.5rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-start .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        footer h4 {
+            color: white;
+            margin-bottom: 1.1rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #bbb;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.1rem;
+            margin-top: 0.9rem;
+        }
+
+        .social-icons img {
+            width: 26px;
+            height: 26px;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+
+        .social-icons img:hover {
+            opacity: 1;
+        }
+
+        footer p {
+            text-align: center;
+            padding-top: 1.8rem;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .product-detail {
+                flex-direction: column;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+
+            .spec-list {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1.5rem 0;
+            }
+
+            .product-info h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">AY-SHOP</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="product-content">
+            <!-- Product will load here -->
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-start">
+                <div class="logo">AY-SHOP</div>
+                <p style="color:#aaa; margin-top:1rem; font-size:0.95rem; max-width:220px;">
+                    Curated home essentials for the modern lifestyle.
+                </p>
+            </div>
+            <div class="footer-midle">
+                <h4>Contact</h4>
+                <ul>
+                    <li>+212 612 345678</li>
+                    <li>hello@ay-shop.com</li>
+                    <li>Rue Al Nassr, Taza</li>
+                    <li>Morocco</li>
+                    <li class="social-icons">
+                        <img src="img/instagram.svg" alt="Instagram" />
+                        <img src="img/facebook.svg" alt="Facebook" />
+                        <img src="img/pinterest.svg" alt="Pinterest" />
+                    </li>
+                </ul>
+            </div>
+            <div class="end-footer">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">All Products</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="container">AY-SHOP &copy; 2025 — Crafted with care for your home.</p>
+    </footer>
+
+    <script>
+        // ✅ PRODUCT DATABASE — KEYS MUST MATCH URL ID EXACTLY
+        const products = {
+            "velvet-sofa": {
+                name: "Luxury Velvet Sofa",
+                price: "$1200",
+                description: "Plush velvet upholstery with solid wood legs. Perfect centerpiece for modern living rooms.",
+                imageClass: "velvet-sofa",
+                tags: ["Modern", "Living Room", "Upholstered"],
+                specs: [
+                    { label: "Material", value: "Velvet + Solid Wood" },
+                    { label: "Dimensions", value: "220 x 90 x 85 cm" },
+                    { label: "Weight", value: "45 kg" },
+                    { label: "Seating", value: "3 persons" },
+                    { label: "Assembly", value: "Required" },
+                    { label: "Warranty", value: "2 years" }
+                ]
+            },
+            "marble-lamp": {
+                name: "Marble Base Table Lamp",
+                price: "$240",
+                description: "Elegant marble base with linen shade. Soft ambient lighting for bedrooms or studies.",
+                imageClass: "marble-lamp",
+                tags: ["Scandinavian", "Bedroom", "Lighting"],
+                specs: [
+                    { label: "Material", value: "Marble + Linen" },
+                    { label: "Height", value: "55 cm" },
+                    { label: "Bulb", value: "E27, Max 60W" },
+                    { label: "Cord Length", value: "1.8 m" },
+                    { label: "Dimmable", value: "Yes" },
+                    { label: "Warranty", value: "1 year" }
+                ]
+            },
+            "wooden-table": {
+                name: "Reclaimed Wood Dining Table",
+                price: "$850",
+                description: "Handcrafted from reclaimed oak. Seats 6–8. Warm, organic texture for rustic dining spaces.",
+                imageClass: "wooden-table",
+                tags: ["Rustic", "Dining", "Solid Wood"],
+                specs: [
+                    { label: "Material", value: "Reclaimed Oak" },
+                    { label: "Dimensions", value: "200 x 100 x 75 cm" },
+                    { label: "Weight", value: "60 kg" },
+                    { label: "Finish", value: "Natural Oil" },
+                    { label: "Seats", value: "6-8 people" },
+                    { label: "Warranty", value: "3 years" }
+                ]
+            },
+            "wall-mirror": {
+                name: "Minimalist Wall Mirror",
+                price: "$180",
+                description: "Sleek frameless design with anti-fog coating. Perfect for entryways or bathrooms.",
+                imageClass: "wall-mirror",
+                tags: ["Minimalist", "Bathroom", "Mirror"],
+                specs: [
+                    { label: "Material", value: "Tempered Glass" },
+                    { label: "Dimensions", value: "80 x 120 cm" },
+                    { label: "Thickness", value: "5 mm" },
+                    { label: "Mounting", value: "Wall-mounted" },
+                    { label: "Anti-fog", value: "Yes" },
+                    { label: "Warranty", value: "1 year" }
+                ]
+            },
+            "ceramic-vase": {
+                name: "Handcrafted Ceramic Vase",
+                price: "$95",
+                description: "Artisan-made stoneware with reactive glaze. Each piece is one-of-a-kind.",
+                imageClass: "ceramic-vase",
+                tags: ["Scandinavian", "Living Room", "Ceramic"],
+                specs: [
+                    { label: "Material", value: "Stoneware" },
+                    { label: "Height", value: "28 cm" },
+                    { label: "Diameter", value: "15 cm" },
+                    { label: "Handmade", value: "Yes" },
+                    { label: "Waterproof", value: "Yes" },
+                    { label: "Care", value: "Hand wash only" }
+                ]
+            }
+        };
+
+        // Get product ID from URL
+        function getProductId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // Render product
+        function renderProduct() {
+            const id = getProductId();
+            const product = products[id];
+
+            const contentEl = document.getElementById('product-content');
+
+            if (!product) {
+                contentEl.innerHTML = `
+                    <div style="text-align: center; padding: 3rem;">
+                        <h2 style="color: #e00; margin-bottom: 1rem;">Product Not Found</h2>
+                        <p>Sorry, we couldn't find a product with ID: <strong>${id || 'none'}</strong></p>
+                        <a href="index.html" class="btn" style="display: inline-block; margin-top: 1rem;">Back to Store</a>
+                    </div>
+                `;
+                console.error("Product ID not found in database:", id);
+                return;
+            }
+
+            // Background styles matching your main page
+            const bgStyles = {
+                "velvet-sofa": "background: linear-gradient(135deg, #e0c9a6, #d4b483);",
+                "marble-lamp": "background: linear-gradient(135deg, #f0f0f0, #e0e0e0);",
+                "wooden-table": "background: linear-gradient(135deg, #c19a6b, #a67c52);",
+                "wall-mirror": "background: linear-gradient(135deg, #e2e2e2, #cfcfcf);",
+                "ceramic-vase": "background: linear-gradient(135deg, #f5e6d3, #e8d5b7);"
+            };
+
+            const bgStyle = bgStyles[product.imageClass] || "background: #f0f0f0;";
+
+            const tagsHTML = product.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+            const specsHTML = product.specs.map(spec => 
+                `<div class="spec-item"><span>${spec.label}</span> <span>${spec.value}</span></div>`
+            ).join('');
+
+            contentEl.innerHTML = `
+                <div class="product-detail">
+                    <div class="product-images">
+                        <div class="main-image" style="${bgStyle}"></div>
+                    </div>
+                    <div class="product-info">
+                        <h1>${product.name}</h1>
+                        <div class="price">${product.price}</div>
+                        <div class="tags">${tagsHTML}</div>
+                        <p class="description">${product.description}</p>
+                        <button class="btn">Add to Cart</button>
+                        <div class="specs">
+                            <h3>Technical Specifications</h3>
+                            <div class="spec-list">${specsHTML}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', renderProduct);
+    </script>
+</body>
+</html>
